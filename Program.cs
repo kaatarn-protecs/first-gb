@@ -25,7 +25,19 @@ string[] UserMasAdd(int lenghtMas)
     return nowMas;
 }
 
+void PrintArray(string[] res1)
+{
+    Console.Write($"[ ");
+    for (int i = 0; i < res1.Length; i++)
+    {
+        if (i < res1.Length - 1) Console.Write($"{res1[i]}, ");
+        else Console.Write($"{res1[i]} ");
+    }
+    Console.Write($"]");
+}
+
 string[] newUserMas = UserMasAdd(colmas);
+PrintArray(newUserMas);
 
 string[] FormattedStringArray(string[] firstMas)
 {
@@ -36,14 +48,20 @@ string[] FormattedStringArray(string[] firstMas)
         if (firstMas[i].Length > 0 && firstMas[i].Length < 4)
             irow++;
     }
-    Console.Write(irow);
-    // for (int j = 0; j < length; j++)
-    // {
 
-    // }
-    // string[] secondMas = new string[5];
-    return firstMas;
+    string[] formattedMas = new string[irow];
+    int j = 0;
+    for (int i = 0; i < firstMas.Length; i++)
+    {
+        if (firstMas[i].Length > 0 && firstMas[i].Length < 4)
+        {
+            formattedMas[j] = firstMas[i];
+            j++;
+        }
+    }
+    return formattedMas;
 }
 
-FormattedStringArray(newUserMas);
-
+string[] completeMas = FormattedStringArray(newUserMas);
+Console.Write(" -> ");
+PrintArray(completeMas);
